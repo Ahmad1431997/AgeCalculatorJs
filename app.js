@@ -13,18 +13,48 @@
 
 // This functions should check the integrity of the parameters and pass true/false
 function checkParamsFn(year, month, day) {
-  // Write your code here
+  if (Number.isInteger(year) && Number.isInteger(month) && Number.isInteger(day)){
+    return true;
+  }else{
+  return false;
 }
+}
+
 
 // This functions checks if the person is or above 18 years of age, return true/false
-function checkOverEighteenFn(year, month, day) {
-  // Write your code here
+/*let y1 = new Date();
+ y1 = y1.getFullYear();
+function checkOverEighteenFn(year,month,day) {
+  if ((y1-year)>18) return true;
+  return false;
+}*/
+function checkOverEighteenFn(year,month,day){
+  let y = new Date().getFullYear();
+  let m = new Date().getMonth();
+  let d=new Date().getDate();
+  if ((y-year)>18 && month<=12 && day<=31 ) return true;
+  return false;
 }
 
+
+//console.log(fn2);
 function calculateAgeFn(year, month, day) {
-  // Write your code here
+  let fn1 = checkParamsFn(year,month,day);
+  let fn2 = checkOverEighteenFn(year,month,day);
+  let y = new Date().getFullYear();
+  let m = new Date().getMonth();
+  let d=new Date().getDate();
+  if ( fn1 && fn2 ){
+    let age = y-year;
+  //  Math.round(age);
+  // let a =(`Your Age is : ${age}`);
+    return age;
+  }
+   else {
+    return ("error") ;
+   }
 }
-
+calculateAgeFn(1997,3,14);
 // Look at the naming of the functions. it looks like salwaBaqer, where
 // the first letter of the first word is small, while the first letter of the
 // second word is Capital. This is called "Camel Casing."
